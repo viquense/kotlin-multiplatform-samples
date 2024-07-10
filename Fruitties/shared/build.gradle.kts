@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 /*
  * Copyright 2024 The Android Open Source Project
  *
@@ -20,16 +23,17 @@ plugins {
     alias(libs.plugins.skie)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_22)
         }
     }
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -40,9 +44,9 @@ kotlin {
             isStatic = true
         }
     }
-    sourceSets.all {
+    /*sourceSets.all {
         languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
-    }
+    }*/
     sourceSets {
         commonMain.dependencies {
             // put your multiplatform dependencies here
@@ -75,13 +79,13 @@ kotlin {
 
 android {
     namespace = "com.example.fruitties"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 26
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_22
+        targetCompatibility = JavaVersion.VERSION_22
     }
 }
 
@@ -90,6 +94,7 @@ dependencies {
     add("kspIosSimulatorArm64", libs.androidx.room.compiler)
     add("kspIosX64", libs.androidx.room.compiler)
     add("kspIosArm64", libs.androidx.room.compiler)
+    implementation(libs.androidx.runtime)
 }
 
 room {

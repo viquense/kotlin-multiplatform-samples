@@ -1,24 +1,26 @@
 [versions]
-agp = "8.2.0"
-androidx-activityCompose = "1.8.2"
-androidx-paging = "3.3.0-rc01"
-androidx-room = "2.7.0-alpha01"
-androidx-viewmodelCompose = "2.7.0"
-atomicfu = "0.23.1"
-compose = "1.6.5"
+agp = "8.5.0"
+androidx-activityCompose = "1.9.0"
+androidx-paging = "3.3.0"
+androidx-room = "2.7.0-alpha04"
+androidx-viewmodelCompose = "2.8.3"
+atomicfu = "0.24.0"
+compose = "1.6.8"
 compose-compiler = "1.5.11"
 compose-material3 = "1.2.1"
-compose-plugin = "1.6.0"
+compose-plugin = "1.6.11"
 dataStoreVersion = "1.1.1"
-kotlin = "1.9.23"
-kotlinx-coroutines = "1.8.0"
-kotlinxDatetime = "0.6.0-RC.2"
-ksp = "1.9.23-1.0.19"
-ktorVersion = "2.3.8"
+kotlin = "2.0.0"
+kotlinx-coroutines = "1.9.0-RC"
+kotlinxDatetime = "0.6.0"
+ksp = "2.0.0-1.0.22"
+ktorVersion = "2.3.12"
 material3Android = "1.2.1"
-pagingComposeAndroid = "3.3.0-beta01"
+pagingComposeAndroid = "3.3.0"
+roomCompilerVersion = "2.6.1"
 roomKtx = "2.6.1"
-skie = "0.6.2"
+runtime = "1.6.8"
+skie = "0.8.2"
 sqlite = "2.5.0-SNAPSHOT"
 spotless = "6.19.0"
 
@@ -32,6 +34,7 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidx-room" }
 androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "androidx-room" }
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
+androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
 androidx-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-viewmodelCompose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
@@ -51,10 +54,19 @@ ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "kto
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktorVersion" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorVersion" }
 okio = "com.squareup.okio:okio:3.9.0"
+room-compiler-v261 = { module = "androidx.room:room-compiler", version.ref = "roomCompilerVersion" }
 skie-annotations = { module = "co.touchlab.skie:configuration-annotations", version.ref = "skie" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+#compose-compiler-gradle-plugin = { group = "org.jetbrains.kotlin.plugin.compose", name = "org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin" }
+compose-compiler-gradle-plugin = { group = "org.jetbrains.kotlin", name = "ç", version.ref = "kotlin" }
 
 [plugins]
+#compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
